@@ -1,27 +1,69 @@
-import { Text, View } from 'native-base'
-import React from 'react'
+import { Button, Text, VStack, View } from 'native-base'
+import React, { useEffect, useRef, useState } from 'react'
 import PageWrapper from '../../components/PageWrapper'
 import { useQuery } from 'react-query'
 import axios from '../../utils/axios'
 import { Dimensions, ImageBackground, StyleSheet } from 'react-native'
 import { IMG_URL } from '@env'
 import { colors } from '../../theme/variables'
+import { useTranslation } from 'react-i18next'
+import Carousel from 'react-native-snap-carousel'
+import MovieCard from '../../components/Card'
+import { useNavigation } from '@react-navigation/native'
+import paths from '../../constants/routePaths'
 
 const Home = () => {
+    const { t } = useTranslation()
+    const navigation = useNavigation()
+    const carouselRef = useRef(null)
+    const [trendings, setTrendings] = useState<any>([])
+
     const fetchTrendingMovie = async () => {
         const { data } = await axios.get('/trending/movie/day')
-        return data?.results
+        setTrendings(data?.results)
     }
 
-    const { data } = useQuery('trendings', fetchTrendingMovie)
+    const handleNavigate = () => {
+        navigation.navigate(paths.MOVIE_INFO as never, { _id: trendings[0]?.id } as never)
+    }
+
+    useEffect(() => {
+        fetchTrendingMovie()
+    }, [])
+
+    const renderItem = ({ item }) => (
+        <MovieCard mediaType={"movie"}
+            key={item?.id}
+            img={item?.poster_path}
+            progress={item?.vote_average}
+            title={item?.title}
+            date={item?.release_date}
+            id={item?.id} />
+    )
 
     return (
         <>
-            <ImageBackground source={{ uri: IMG_URL + (data[0]?.backdrop_path ?? data[0]?.poster_path) }} style={styles.trendingBgImage}>
+            <ImageBackground blurRadius={3} source={{ uri: IMG_URL + (trendings[0]?.backdrop_path ?? trendings[0]?.poster_path) }} style={styles.trendingBgImage}>
                 <View style={styles.trendingInner}>
-                    <Text>{data[0]?.title}</Text>
+                    <Text color="white.100" size="5xl" fontWeight="600" noOfLines={1}>{trendings[0]?.title}</Text>
+                    <Text color="white.100" color="gray.200" noOfLines={3} fontWeight="500">{trendings[0]?.overview}</Text>
+                    <Button width="130px" marginTop="15px" onPress={handleNavigate}>{t('View')}</Button>
                 </View>
             </ImageBackground>
+            <PageWrapper>
+                <VStack space="20px" marginTop="20px">
+                    <Text fontSize="xl">{t("What's Popular?")}</Text>
+                    <Carousel
+                        ref={carouselRef}
+                        data={trendings}
+                        renderItem={renderItem}
+                        sliderWidth={Dimensions.get('window').width - 36}
+                        itemWidth={180}
+                        autoplay
+                        loop
+                    />
+                </VStack>
+            </PageWrapper>
         </>
     )
 }
@@ -34,8 +76,9 @@ const styles = StyleSheet.create({
     trendingInner: {
         flex: 1,
         paddingHorizontal: 18,
-        paddingTop: 50,
+        paddingTop: 40,
         justifyContent: 'center',
+        gap: 10,
         backgroundColor: colors.main[75]
     }
 })

@@ -1,7 +1,7 @@
 export const colors = {
     main: {
         50: "#ef233c2b",
-        75: "#ef233c4b",
+        75: "#44020b9c",
         100: "#ef233c",
         600: "#ef233c",
     },

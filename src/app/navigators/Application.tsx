@@ -14,6 +14,9 @@ import { navigationRef } from "./utils";
 import { MAIN_ROUTES } from "./Routes";
 
 export type RootStackParamList = {
+    MovieInfo: {
+        _id: string;
+    };
 };
 
 export type ScreenNavigationProp<T extends keyof RootStackParamList> =
