@@ -9,6 +9,7 @@ interface IPageWrapperProps {
     paddingH?: number | string;
     height?: string | number;
     safeAreaViewColor?: string;
+    style?: any
 }
 
 const PageWrapper = ({
@@ -17,6 +18,7 @@ const PageWrapper = ({
     paddingH,
     height,
     safeAreaViewColor,
+    style
 }: IPageWrapperProps) => {
     return (
         <SafeAreaView
@@ -29,7 +31,7 @@ const PageWrapper = ({
                 bg={bg ?? "white.100"}
                 showsVerticalScrollIndicator={false}
                 maxHeight={height}
-                style={[styles.scrollView, { paddingHorizontal: paddingH ?? 18 }]}
+                style={[styles.scrollView, { paddingHorizontal: paddingH ?? 18 }, style]}
             >
                 <View style={styles.wrapper}>{children}</View>
             </ScrollView>
