@@ -20,7 +20,7 @@ const MovieCard = ({ img, title, date, progress, id, mediaType }: IMovieCard) =>
     const navigation = useNavigation()
 
     const handleNavigate = () => {
-        navigation.navigate(paths.MOVIE_INFO as never, { _id: id } as never)
+        navigation.push(paths.MOVIE_INFO as never, { _id: id } as never)
     }
 
     return (
@@ -30,7 +30,7 @@ const MovieCard = ({ img, title, date, progress, id, mediaType }: IMovieCard) =>
             <HStack alignItems="center">
                 <HStack alignItems="center" space="5px">
                     <Icon as={Feather} name="star" size="18px" color="yellow.100" />
-                    <Text size="sm" color="darkGray.100" fontWeight="500">{progress.toFixed(1)}</Text>
+                    <Text size="sm" color="darkGray.100" fontWeight="500">{progress?.toFixed(1)}</Text>
                 </HStack>
                 <Divider bg="darkGray.100" marginX="8px" orientation="vertical" />
                 <Text color="darkGray.100">{moment(date).format('YYYY')}</Text>

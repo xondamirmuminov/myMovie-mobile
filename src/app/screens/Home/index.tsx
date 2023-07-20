@@ -60,6 +60,7 @@ const Home = () => {
                         sliderWidth={Dimensions.get('window').width - 36}
                         itemWidth={180}
                         autoplay
+                        autoplayInterval={10000}
                         loop
                     />
                 </VStack>

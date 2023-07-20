@@ -19,6 +19,9 @@ export const theme = extendTheme({
                     backgroundColor: "black.100",
                     borderWidth: 1,
                     borderColor: "black.100",
+                    _text: {
+                        color: 'white.100'
+                    }
                 },
                 outline: {
                     bg: "transparent",

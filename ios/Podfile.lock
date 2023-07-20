@@ -97,9 +97,6 @@ PODS:
     - FBLazyVector (= 0.72.3)
     - RCTRequired (= 0.72.3)
     - React-Core (= 0.72.3)
-  - RCTYouTube (2.0.2):
-    - React
-    - YoutubePlayer-in-WKWebView (~> 0.3.1)
   - React (0.72.3):
     - React-Core (= 0.72.3)
     - React-Core/DevSupport (= 0.72.3)
@@ -380,6 +377,8 @@ PODS:
     - glog
   - react-native-safe-area-context (3.3.2):
     - React-Core
+  - react-native-webview (13.2.3):
+    - React-Core
   - React-NativeModulesApple (0.72.3):
     - hermes-engine
     - React-callinvoker
@@ -532,7 +531,6 @@ PODS:
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
-  - YoutubePlayer-in-WKWebView (0.3.8)
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -566,7 +564,6 @@ DEPENDENCIES:
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
-  - RCTYouTube (from `../node_modules/react-native-youtube`)
   - React (from `../node_modules/react-native/`)
   - React-callinvoker (from `../node_modules/react-native/ReactCommon/callinvoker`)
   - React-Codegen (from `build/generated/ios`)
@@ -582,6 +579,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -622,7 +620,6 @@ SPEC REPOS:
     - OpenSSL-Universal
     - SocketRocket
     - YogaKit
-    - YoutubePlayer-in-WKWebView
 
 EXTERNAL SOURCES:
   boost:
@@ -644,8 +641,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
     :path: "../node_modules/react-native/Libraries/TypeSafety"
-  RCTYouTube:
-    :path: "../node_modules/react-native-youtube"
   React:
     :path: "../node_modules/react-native/"
   React-callinvoker:
@@ -672,6 +667,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -741,7 +738,6 @@ SPEC CHECKSUMS:
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: a2faf4bad4e438ca37b2040cb8f7799baa065c18
   RCTTypeSafety: cb09f3e4747b6d18331a15eb05271de7441ca0b3
-  RCTYouTube: a8bb45705622a6fc9decf64be04128d3658ed411
   React: 13109005b5353095c052f26af37413340ccf7a5d
   React-callinvoker: c8c87bce983aa499c13cb06d4447c025a35274d6
   React-Codegen: 712d523524d89d71f1cf7cc624854941be983c4d
@@ -755,6 +751,7 @@ SPEC CHECKSUMS:
   React-jsinspector: b511447170f561157547bc0bef3f169663860be7
   React-logger: c5b527272d5f22eaa09bb3c3a690fee8f237ae95
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
+  react-native-webview: b85dfe0bf95bef83e82fc354d6987c80fed5e7ad
   React-NativeModulesApple: c57f3efe0df288a6532b726ad2d0322a9bf38472
   React-perflogger: 6bd153e776e6beed54c56b0847e1220a3ff92ba5
   React-RCTActionSheet: c0b62af44e610e69d9a2049a682f5dba4e9dff17
@@ -780,7 +777,6 @@ SPEC CHECKSUMS:
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 8796b55dba14d7004f980b54bcc9833ee45b28ce
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
-  YoutubePlayer-in-WKWebView: 4fca3b4f6f09940077bfbae7bddb771f2b43aacd
 
 PODFILE CHECKSUM: 06a7dabe4b859528f8ad4b32c87cef80ef79accb
 
