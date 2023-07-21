@@ -34,15 +34,13 @@ const Home = () => {
     const renderItem = ({ item }) => (
         <MovieCard mediaType={"movie"}
             key={item?.id}
-            img={item?.poster_path}
-            progress={item?.vote_average}
-            title={item?.title}
-            date={item?.release_date}
-            id={item?.id} />
+            movie={item}
+        />
     )
 
     return (
         <>
+        <PageWrapper paddingH={0}>
             <ImageBackground blurRadius={3} source={{ uri: IMG_URL + (trendings[0]?.backdrop_path ?? trendings[0]?.poster_path) }} style={styles.trendingBgImage}>
                 <View style={styles.trendingInner}>
                     <Text color="white.100" size="5xl" fontWeight="600" noOfLines={1}>{trendings[0]?.title}</Text>
@@ -50,7 +48,7 @@ const Home = () => {
                     <Button width="130px" marginTop="15px" onPress={handleNavigate}>{t('View')}</Button>
                 </View>
             </ImageBackground>
-            <PageWrapper>
+            <View style={{paddingHorizontal: 18}}>
                 <VStack space="20px" marginTop="20px">
                     <Text fontSize="xl">{t("What's Popular?")}</Text>
                     <Carousel
@@ -64,7 +62,8 @@ const Home = () => {
                         loop
                     />
                 </VStack>
-            </PageWrapper>
+            </View>
+        </PageWrapper>
         </>
     )
 }

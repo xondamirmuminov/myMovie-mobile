@@ -80,12 +80,7 @@ const MovieInfo = ({route}: ScreenProps<"MovieInfo">) => {
     const renderRecommendation = ({ item }: any) => (
         <MovieCard
             mediaType={"movie"}
-            key={item?.id}
-            img={item?.poster_path}
-            progress={item?.vote_average}
-            title={item?.title}
-            date={item?.release_date}
-            id={item?.id} />
+            movie={item} />
     )
 
     return (
