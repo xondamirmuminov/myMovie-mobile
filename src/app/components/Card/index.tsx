@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react'
-import {Pressable, StyleSheet} from 'react-native'
-import TMDBImage from '../TMDBImage'
+import React from 'react';
+import {Pressable, StyleSheet} from 'react-native';
+import TMDBImage from '../TMDBImage';
 import {Divider, HStack, Icon, Text} from 'native-base';
-import Feather from 'react-native-vector-icons/Feather'
+import Feather from 'react-native-vector-icons/Feather';
 import moment from 'moment';
 import {useNavigation} from '@react-navigation/native';
 import paths from '../../constants/routePaths';
@@ -14,18 +14,13 @@ interface IMovieCard {
 
 const MovieCard = ({ movie, mediaType }: IMovieCard) => {
     const navigation = useNavigation()
-    const [phone, setPhone] = useState('+998292')
-
-    const callPhone = useCallback(() => {
-        console.log('gegeegg')
-    }, [phone])
 
     const handleNavigate = () => {
         navigation.push(paths.MOVIE_INFO as never, { _id: movie?.id } as never)
     }
 
     return (
-        <Pressable style={styles.card} onPress={callPhone}>
+        <Pressable style={styles.card} onPress={handleNavigate}>
             <TMDBImage uri={movie?.poster_path} style={styles.cardImage} />
             <Text fontSize="lg" noOfLines={1}>{movie?.title}</Text>
             <HStack alignItems="center">
